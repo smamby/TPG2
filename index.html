@@ -12,14 +12,25 @@
             background-color: rgb(19, 20, 19);
             color: rgb(206, 31, 0);
             font-family: Helvetica, sans-serif;
+            width: 100%;
         }
         #consola {
+            display: flex;
+            flex-wrap: wrap;
+            word-wrap: break-all;
             background-color: rgb(46, 51, 46);
             color: tomato;
-            width: 100%;
+            width: 90vw;
             height: auto;
             min-height: 80vh;
             padding: 16px;
+            /* overflow-x: hidden; */
+            overflow-wrap: break-word;
+        }
+        #consola text {
+            display: flex;
+            flex-wrap: wrap;
+            word-wrap: break-all;
         }
         h3 {
             margin: 36px 0 4px;
