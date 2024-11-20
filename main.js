@@ -23,13 +23,14 @@ function contarVocales(text) {
     let response = `Solucion 1: Tien ${cantVocales} vocales.`;   
     consolaPrint(' ');
     consolaPrint(`Ejercicio 1:`);
-    consolaPrint('contarVocales("JavaScript")');
+    consolaPrint(`contarVocales("${text}")`);
     consolaPrint(response)
     consolaPrint(' '); 
     return response
 }
 console.log(contarVocales("JavaScript"));
-
+console.log(contarVocales("checklist"));
+console.log(contarVocales("aguantadero"));
 /* Recibo los datos necesarios como parametros y los uso en la formula de area del triangulo*/
 
 // EJERCICIO 2
@@ -48,13 +49,15 @@ function maxNum(arrayNum) {
     let response = `Solucion 2: El número mayor es ${numMayor}`;   
     consolaPrint(' ');
     consolaPrint(`Ejercicio 2:`);
-    consolaPrint('maxNum(arrayNumeros)');
+    consolaPrint(`maxNum(${arrayNum})`);
     consolaPrint(response);  
     consolaPrint(' '); 
     return response
 }
 
-console.log(maxNum(arrayNumeros));
+console.log(maxNum([1, 2, 3, 4, 5, 8, 6, 3, 3, 2, 9, 1, 6, 7, 8]));
+console.log(maxNum([1, 20, 4, 5, 8, 1, 33, 3, 1, 6, 8]));
+console.log(maxNum([1, 21, 31, 4, 51, 81, 0, -3, 3, -2, 9, 1, 6, 7, 8]));
 /* uso split para separar la cadena por sus espacios metiendo cada parte en un indice de array para luego leer su longitud */
 
 // EJERCICIO 3
@@ -71,13 +74,15 @@ function calcularMedia(arr) {
     let response = `Solucion 3: La media es  ${media}`;  
     consolaPrint(' ');
     consolaPrint(`Ejercicio 3:`);
-    consolaPrint('calcularMedia([10, 20, 30, 40])');
+    consolaPrint(`calcularMedia(${arr})`);
     consolaPrint(response);  
     consolaPrint(' ');
     return response
 }
 
 console.log(calcularMedia([10, 20, 30, 40]));
+console.log(calcularMedia([-20, 90, 130, 20]));
+console.log(calcularMedia([1, 1, 1, 40]));
 
 /* Recorro la cadena para atras y cada caracter lo concateno al resultado para ir construyendo una cadena invertida */
 
