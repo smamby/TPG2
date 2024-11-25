@@ -3,14 +3,21 @@ function consolaPrint(text) {
     consola.innerHTML += text+'<br>';
 }
 
-//  EJERCICIO 1
-function contarVocales(text) {
-    const vocales = ['a','e','i','o','u'];
-    let cantVocales = 0;
-    for (let i = 0; i < text.length; i++) {
-        if (vocales.includes(text[i])) {
-            cantVocales += 1;
-        } 
+/*///////////////// Ejercicio N° 1 //////////////////*/
+function contarVocales(cadena) {
+    // Convertir la cadena a minúsculas para simplificar la comparación
+    const texto = cadena.toLowerCase();
+    // Definir las vocales que vamos a buscar
+    const vocales = ['a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ó', 'ú'];
+    // Contador de vocales
+    let contador = 0;
+    
+    // Recorrer cada carácter de la cadena
+    for (let caracter of texto) {
+        // Si el carácter es una vocal, incrementar el contador
+        if (vocales.includes(caracter)) {
+            contador++;
+        }
     }
     
     console.log('');
@@ -20,22 +27,32 @@ function contarVocales(text) {
     console.log('|||||||||||||    ejercicio 1    |||||||||||||');
     console.log('|||||||||||||                   |||||||||||||');
     console.log('');
-    let response = `Solucion 1: Tien ${cantVocales} vocales.`;   
+    let response = `Solucion 1: Tien ${contador} vocales.`;   
     consolaPrint(' ');
-    consolaPrint(`Ejercicio 1:`);
-    consolaPrint(`contarVocales("${text}")`);
+    consolaPrint(`Ejercicio 1: Contar vocales en una cadena`);
+    consolaPrint(`contarVocales("${cadena}")`);
     consolaPrint(response)
     consolaPrint(' '); 
     return response
 }
-console.log(contarVocales("JavaScript"));
-console.log(contarVocales("checklist"));
-console.log(contarVocales("aguantadero"));
-/* Recorro cada letra de la palabra y verifico si esta esta incluida en el array con las 5 vocales, 
-si esta incluida suma 1 a la variable que contabiliza las vocales*/
+console.log(contarVocales("Desarrollo de Sistemas Web"));
+console.log(contarVocales("Desarrollo e Implementación de Sistemas en la Nube"));
+console.log(contarVocales("Ingeniería de Software"));
+/* PROCESO DE PENSAMIENTO Y SOLUCIÓN:
 
-// EJERCICIO 2
-let arrayNumeros = [1, 2, 3, 4, 5, 8, 6, 3, 3, 2, 9, 1, 6, 7, 8];
+Análisis Inicial
+El objetivo es contar cuántas vocales hay en una cadena de texto. Para ello, es importante considerar:
+
+Las vocales pueden estar en mayúsculas o minúsculas.
+Hay que incluir vocales acentuadas para mayor precisión.
+Desarrollo de la Solución
+
+Creamos un array que contenga todas las vocales posibles, incluyendo acentuadas.
+Convertimos la cadena a minúsculas para simplificar las comparaciones.
+Recorremos cada carácter de la cadena y verificamos si está en el array de vocales usando el método includes(). Si lo está, incrementamos un contador.
+*/
+
+/*///////////////// Ejercicio N° 2 //////////////////*/
 function maxNum(arrayNum) {
     arrayNum.reduce((a,b) => { return a < b ? a : b })
     let numMayor = arrayNum.reduce((a,b) => { return a > b ? a : b })
@@ -49,7 +66,7 @@ function maxNum(arrayNum) {
     console.log('');
     let response = `Solucion 2: El número mayor es ${numMayor}`;   
     consolaPrint(' ');
-    consolaPrint(`Ejercicio 2:`);
+    consolaPrint(`Ejercicio 2: Muestra el mayor número de un array`);
     consolaPrint(`maxNum(${arrayNum})`);
     consolaPrint(response);  
     consolaPrint(' '); 
@@ -61,10 +78,17 @@ console.log(maxNum([-1, -20, -4, -5, -8, -1, -33, -3, -1, -6, -8]));
 console.log(maxNum([1, 21, 31, 4, 51, 81, 0, -3, 3, -2, 9, 1, 6, 7, 8]));
 /* Reduzco el array a un solo numero que represente al mayor de todos, para esto utilizo una funcion ternaria en el callback del reduce */
 
-// EJERCICIO 3
-function calcularMedia(arr) {
-    let suma = arr.reduce((a,b) => a+b);
-    let media = suma / arr.length;
+/*///////////////// Ejercicio N° 3 //////////////////*/
+function calcularMedia(array) {
+    // Verificar si el array está vacío
+    if (array.length === 0) {
+        return "El array está vacío";
+    }
+    
+    // Calcular la suma de todos los números
+    const suma = array.reduce((acumulador, numero) => acumulador + numero, 0);
+    
+    let media = suma / array.length;
     console.log('');
     console.log('---------------------------------------------');
     console.log('');
@@ -74,26 +98,39 @@ function calcularMedia(arr) {
     console.log('');
     let response = `Solucion 3: La media es  ${media}`;  
     consolaPrint(' ');
-    consolaPrint(`Ejercicio 3:`);
+    consolaPrint(`Ejercicio 3: Calcular la media de un array de números`);
     consolaPrint(`calcularMedia(${arr})`);
     consolaPrint(response);  
     consolaPrint(' ');
     return response
 }
 
-console.log(calcularMedia([10, 20, 30, 40]));
-console.log(calcularMedia([-20, 90, 130, 20]));
-console.log(calcularMedia([1, 1, 1, 40]));
+console.log(calcularMedia([120, 220, 330, 440]));
+console.log(calcularMedia([-10, 0, 10, 20, -20]));
+console.log(calcularMedia([1[1.5, 2.5, 3.5, 4.5, 5.5]]));
 
-/* Reduzco el array a un solo valor que represente la suma de todos los valores, luego lo divido por la longitud del array y obtengo la media */
+/* PROCESO DE PENSAMIENTO Y SOLUCIÓN:
 
-// EJERCICIO 4
-function invertirArray(arr) {
-    let invArr = [];
-    for (let i = 1; i <= arr.length; i++) {
-        let element = arr[arr.length-i]
-        invArr.push(element);
+Análisis Inicial
+La media se calcula dividiendo la suma de los elementos por la cantidad de elementos. Para ello, necesitamos:
+Sumar todos los elementos del array.
+Contar la cantidad de elementos.
+Manejar casos como arrays vacíos o números decimales.
+
+Desarrollo de la Solución:
+Usamos el método reduce() para sumar todos los números del array de forma declarativa.
+Dividimos esta suma por la longitud del array para obtener la media.
+Incluimos una validación para devolver un mensaje en caso de que el array esté vacío.
+Esto da como resultado un código limpio y funcional.
+*/
+
+/*///////////////// Ejercicio N° 4 //////////////////*/
+function invertirArray(array) {
+    // Verificar si el array está vacío
+    if (array.length === 0) {
+        return "El array está vacío";
     }
+    const invArr = array.slice().reverse();
     console.log('');
     console.log('---------------------------------------------');
     console.log('');
@@ -103,7 +140,7 @@ function invertirArray(arr) {
     console.log('');
     let response = `Solucion 4: ${invArr}`;  
     consolaPrint(' ');
-    consolaPrint(`Ejercicio 4:`);
+    consolaPrint(`Ejercicio 4: Invertir los elementos de un array`);
     consolaPrint(`invertirArray(${arr})`);
     consolaPrint(response);  
     consolaPrint(' ');
@@ -113,12 +150,26 @@ function invertirArray(arr) {
 console.log(invertirArray([1, 2, 3, 4, 5]));
 console.log(invertirArray([10,11,12,'x','y','z']));
 console.log(invertirArray(['a','b','c','d','e']));
-/* Recorro el arra de atras hacia adelante y a cada posicion la empujo a un nuevo array, obteniendo el mismo array pero invertido */
+/* PROCESO DE PENSAMIENTO Y SOLUCIÓN:
+
+Análisis Inicial
+El objetivo es invertir el orden de los elementos de un array. Es importante no modificar el array original para mantener buenas prácticas de programación.
+
+Desarrollo de la Solución
+Usamos el método slice() para hacer una copia del array original.
+Aplicamos el método reverse() a esta copia para invertir su orden.
+Incluimos una validación para manejar arrays vacíos y devolver un mensaje adecuado.
+*/
 
 // EJERCICIO 5
-function eliminarDuplicados(arr) {
-    let lista = new Set(arr);
-    let newArray = Array.from(lista);
+function eliminarDuplicados(array) {
+    // Verificar si el array está vacío
+    if (array.length === 0) {
+        return "El array está vacío";
+    }
+    
+    // Usar Set para eliminar duplicados y convertir de nuevo a array
+    let newArray = [...new Set(array)];
     
     console.log('');
     console.log('---------------------------------------------');
@@ -129,7 +180,7 @@ function eliminarDuplicados(arr) {
     console.log('');
     let response = `Solucion 5: ${newArray}`;
     consolaPrint(' ');
-    consolaPrint(`Ejercicio 5:`);
+    consolaPrint(`Ejercicio 5: Eliminar elementos duplicados de un array`);
     consolaPrint(`eliminarDuplicados(${arr}))`);
     consolaPrint(response);  
     consolaPrint(' ');
@@ -139,17 +190,27 @@ function eliminarDuplicados(arr) {
 console.log(eliminarDuplicados([1, 2, 2, 3, 4, 4, 5]));
 console.log(eliminarDuplicados(['a','a','b','b','b','a','b','a']));
 console.log(eliminarDuplicados(['hola', 'hola', 'hola', 'casa', 'auto', 'auto', 'hola']));
-/* Convierto el array a un set, que por definicion no puede tener elementos repetidos. Luego vuelvo a convertir el set en array */
+/* PROCESO DE PENSAMIENTO Y SOLUCIÓN:
 
+Análisis Inicial
+Queremos eliminar los duplicados de un array manteniendo el orden original.
+
+Desarrollo de la Solución
+Usamos el objeto Set, que automáticamente elimina duplicados gracias a su naturaleza de colección única.
+Convertimos el Set nuevamente a un array con el operador de propagación (...).
+Incluimos una validación para manejar arrays vacíos.
+Esta implementación es moderna y eficiente, especialmente con arrays grandes.
+*/
 
 // EJERCICIO 6
-function capitalizarPalabras(input) {
-    let inputArray = input.split(' ');
-    let newString = ''
-    inputArray.forEach(e => {
-        e = e[0].toUpperCase() + e.slice(1);
-        newString += e+' ';
-    });
+function capitalizarPalabras(cadena) {
+    let palabras = cadena.split(' ');
+    let resultado = [];
+
+    for (let palabra of palabras) {
+        resultado.push(palabra.charAt(0).toUpperCase() + palabra.slice(1));
+    }
+    const newString = resultado.join(' ');
     
     console.log('');
     console.log('---------------------------------------------');
@@ -160,7 +221,7 @@ function capitalizarPalabras(input) {
     console.log('');
     let response = `Solucion 6: ${newString}`;  
     consolaPrint(' ');
-    consolaPrint(`Ejercicio 6:`);
+    consolaPrint(`Ejercicio 6: Convertir la primera letra de cada palabra en mayúscula`);
     consolaPrint(`capitalizarPalabras("${input}")`);
     consolaPrint(response);  
     consolaPrint(' ');
@@ -171,22 +232,27 @@ console.log(capitalizarPalabras("hola mundo desde javascript"));
 console.log(capitalizarPalabras("solo se que no se nada"));
 console.log(capitalizarPalabras("sueñan los androides con ovejas electricas"));
 
-/* Separo el string por sus espacios y los vuelvo un array con cada palabra utilizando split,
-luego le aplico a cada palabra del array un toUpperCase a el indice 0, para solo afectar a la primer letra, eso lo hago recorriendo todo el array
-pasando por todas las palabras. Cada palabra alterada la guardo sobre el mismo indice haciendo una concatenacion de la primer letra + el resto de la palabra utilizando slice */
+/* Comencé dividiendo la cadena original en palabras. 
+Luego, utilicé un bucle para procesar cada palabra, tomando su primera letra, convirtiéndola en mayúscula y uniendo el resto de la palabra. 
+Finalmente, uní*/
 
 // EJERCICIO 7
 function fibonacci(n) {
-    let data1 = 0;
-    let data2 = 1;
-    let data3 = 0;
-    let lista = [0,1]
+    if (n <= 0) {
+        return []; // Retorna un array vacío si n es menor o igual a 0
+    } else if (n === 1) {
+        return [0]; // Retorna sólo el primer número de Fibonacci
+    } else if (n === 2) {
+        return [0, 1]; // Retorna los dos primeros números de Fibonacci
+    }
 
-    for (let i = 0; i<(n-2); i++) {
-        data3 = data1 + data2;
-        data1 = data2;
-        data2 = data3;
-        lista.push(data3);
+    // Inicializa el array con los dos primeros números de Fibonacci
+    const fibSeries = [0, 1];
+
+    // Calcular los siguientes números de Fibonacci hasta el n
+    for (let i = 2; i < n; i++) {
+        const nextNumber = fibSeries[i - 1] + fibSeries[i - 2]; // Sumar los dos últimos números
+        fibSeries.push(nextNumber); // Agregar el nuevo número al array
     }
     
     console.log('');
@@ -196,9 +262,9 @@ function fibonacci(n) {
     console.log('|||||||||||||    ejercicio 7    |||||||||||||');
     console.log('|||||||||||||                   |||||||||||||');
     console.log('');
-    let response = `Solucion 7: la lista de numeros de fibonachi de los primeros ${n} numeros son: ${lista}`;  
+    let response = `Solucion 7: la lista de numeros de fibonachi de los primeros ${n} numeros son: ${fibSeries}`;  
     consolaPrint(' ');
-    consolaPrint(`Ejercicio 7:`);
+    consolaPrint(`Ejercicio 7: Generar los primeros N números de la sucesión de Fibonacci.`);
     consolaPrint(`fibonacci(${n})`);
     consolaPrint(response);  
     consolaPrint(' ');
@@ -209,5 +275,7 @@ console.log(fibonacci(10));
 console.log(fibonacci(15));
 console.log(fibonacci(25));
 
-/* Uso dos variables de arranque con los primeros dos numeros o y 1, y uso una variable comodin para guardar la suma,
-luego paso el valor 2 al 1 y el 3 al 2 y vuelvo a hacer la suma, repito cuantas veces indique el parametro de entreda n */
+/*Para resolver el ejercicio, pensé en cómo se generan estos números. 
+La secuencia comienza con los dos primeros números, 0 y 1. 
+A partir de esos números, cada nuevo número se obtiene sumando los dos números anteriores. 
+Uso un bucle `for` que itera `n` veces, en el cual almaceno cada número en un array. */
