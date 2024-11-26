@@ -1,6 +1,6 @@
 # Trabajo Practico Grupal 2
 
-Gabriela Peña
-Christian Lemos
-Martin Sciotti
-Sebastian Rodriguez Mamby
+Gabriela Peña<br>
+Christian Lemos<br>
+Martin Sciotti<br>
+Sebastian Rodriguez Mamby<br>
